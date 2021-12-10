@@ -3,16 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
     /* test */
-    /* border: 1px red solid;   */
+    /* border: 1px red solid;    */
 }
 
 /* COMMON */
 body{
     font-family: 'Montserrat', sans-serif;
 }
-
 
 /* Wrapper & Container */
 .app-wrapper{
@@ -29,24 +27,21 @@ body{
     max-width: 1200px;
     height: 90%;
     display: flex;
-    /* test */
-    background-color: #e6e6e6;
 }
 
 /* Columns */
 .col-left{
     width: 35%;
-    border-right: 1px solid rgb(167, 167, 167);
-    /* test */
-    background-color: blanchedalmond;
+    border-right: 1px solid rgb(200, 200, 200);
+    background-color: white;
+ 
 }
 .col-right{
     width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* test */
-    background-color:coral;
+  ;
 }
 /* Media query */
 @media screen and (max-width:1100px){
@@ -61,18 +56,15 @@ body{
 }
 .notification{
     height: 80px;
-    /* test */
-    background-color:rgb(240, 178, 231);
+    background-color: #8edafb;
 }
-.row.send-message{
+.send-message{
     height: 75px;
-    /* test */
-    background-color:rgb(166, 243, 233);
+    background-color:#f3eeea;
 }
 .contact-filter{
     height: 50px;
-    /* test */
-    background-color: khaki;
+    background-color: #f3eeea;
 }
 .contacts li{
     list-style-type: none;
@@ -80,54 +72,51 @@ body{
     display: flex;
     align-items: center;
     padding: 15px;
-
-    /* test */
-    background-color:lightblue;
-    border-bottom: 1px solid black ;
+    border-bottom: 1px solid rgb(200, 200, 200) ;
 }
 
-
-/* Contacts info */
+/* Common User & Contact */
 img{
     border-radius: 50%;
     margin-right: 5px;
 } 
-.user img{
+.user img, .contact img{
     width: 50px;
 } 
 .contacts img{
     width: 60px;
 } 
-
-
-
-
-
-.contacts span, .user-info span{
+.contacts span, 
+.user-info span, 
+.contact-info span, 
+.notification span{
     font-size: 15px;
     font-weight: bold;
     margin-left: 5px;
 } 
-/* User */
-.user {
+.user, .contact {
+    background-color: #eaeaea ;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
 }
-
-.user-info{
+.user-info, .contact-info {
     display: flex;
     align-items: center;
 }
-
-.user .buttons{
+.contact-info span {
+    display: block;
+}
+.contact-info .last-access {
+    font-size: 11px;
+    padding-top: 4px;
+    color: grey;
+}
+.user .buttons, .contact .buttons{
     color: grey;
     font-size: 20px;
 }
-
-
-
 .user .buttons{
     text-align: right;
 }
@@ -143,17 +132,33 @@ img{
     margin: 15px 0 ;
     width: 40%;
     max-width: 60%;
-     
     border-radius: 10px ;
     padding: 30px 15px;
-    
 }
-
 .received{
     background-color: white ;
-    
-    
 }
 .sent{
     background-color: #d5f9ba ;
+}
+
+/* Notification */
+.circle {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+}
+.notification .desktop-notifaction {
+    font-weight: normal;
+    font-size: 12px;
+    text-decoration: underline;
+    display: block;
+    color: grey;
+}
+.notification{
+    display: flex;
+    align-items: center;
+    padding-left: 15px ;
 }
