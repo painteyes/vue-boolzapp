@@ -8,6 +8,10 @@
     /* border: 1px red solid;   */
 }
 
+/* COMMON */
+body{
+    font-family: 'Montserrat', sans-serif;
+}
 
 
 /* Wrapper & Container */
@@ -54,8 +58,6 @@
 /* Rows */
 .user-info, .contact-info{
     height: 70px;
-    /* test */
-    background-color:rgb(194, 185, 245);
 }
 .notification{
     height: 80px;
@@ -85,18 +87,50 @@
 }
 
 
-
-/* Contacts */
-.contacts img{
-    width: 60px;
+/* Contacts info */
+img{
     border-radius: 50%;
     margin-right: 5px;
 } 
-.contacts span{
+.user img{
+    width: 50px;
+} 
+.contacts img{
+    width: 60px;
+} 
+
+
+
+
+
+.contacts span, .user-info span{
     font-size: 15px;
     font-weight: bold;
     margin-left: 5px;
 } 
+/* User */
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+}
+
+.user .buttons{
+    color: grey;
+    font-size: 20px;
+}
+
+
+
+.user .buttons{
+    text-align: right;
+}
 
 /* Chat */
 .chat{
