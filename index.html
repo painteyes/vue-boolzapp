@@ -37,22 +37,10 @@
 
                 <!-- Contacts list -->
                 <ul class="contacts">
-                    <li>
-                        <img src="" alt="">
-                        <span></span>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <span></span>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <span></span>
-                    </li>
-                    <li>
-                        <img src="" alt="">
-                        <span></span>
-                    </li>
+                    <li v-for='element in contacts'>
+                        <img :src="'img/avatar' + element.avatar + '.jpg'" alt="Contact avatar">
+                        <span>{{element.name}}</span>
+                    </li> 
                 </ul>
             </div>
 
@@ -66,6 +54,25 @@
                 <!-- Chat -->
                 <div class="chat">
 
+                    <!-- Text messages -->
+                    <ul class="history">
+                        <li class='received'>
+                            <span class="text">La Marianna va in campagna</span>
+                            <span class="time-and-date">10/12/2021</span>
+                        </li>
+                        <li class='sent'>
+                            <div class="text">Sicuro di non aver sbagliato chat?</div>
+                            <div class="time-and-date">
+                                10/12/2021
+                            </div>
+                        </li>
+                        <li class='received'>
+                            <div class="text">Ah scusa!</div>
+                            <div class="time-and-date">
+                                10/12/2021
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
                 <!-- Send message -->

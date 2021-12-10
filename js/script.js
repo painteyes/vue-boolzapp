@@ -1,7 +1,7 @@
 Vue.config.devtools = true;
 
-const newApp = newVue ({
-    el: '#root',
+const newApp = new Vue({
+    el: "#root",
     data: {
         contacts: [
             {

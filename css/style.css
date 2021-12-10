@@ -8,11 +8,7 @@
     /* border: 1px red solid;   */
 }
 
-/* COMMON */
-img{
-    width: 100%;
-    height: auto;
-}
+
 
 /* Wrapper & Container */
 .app-wrapper{
@@ -79,12 +75,51 @@ img{
 .contacts li{
     list-style-type: none;
     height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+
     /* test */
     background-color:lightblue;
     border-bottom: 1px solid black ;
 }
 
+
+
+/* Contacts */
+.contacts img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 5px;
+} 
+.contacts span{
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5px;
+} 
+
+/* Chat */
 .chat{
     height: calc(100% - 70px - 75px);
     background-image: url('../img/mine.jpg');
+    padding: 30px 50px;
+}
+.history li{
+    list-style-type: none;
+    margin: 15px 0 ;
+    width: 40%;
+    max-width: 60%;
+     
+    border-radius: 10px ;
+    padding: 30px 15px;
+    
+}
+
+.received{
+    background-color: white ;
+    
+    
+}
+.sent{
+    background-color: #d5f9ba ;
 }
