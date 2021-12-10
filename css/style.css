@@ -36,11 +36,15 @@ img{
 /* Columns */
 .col-left{
     width: 35%;
+    border-right: 1px solid rgb(167, 167, 167);
     /* test */
     background-color: blanchedalmond;
 }
 .col-right{
     width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     /* test */
     background-color:coral;
 }
@@ -52,16 +56,35 @@ img{
 }  
 
 /* Rows */
-.row {
-    height: 100px;
+.user-info, .contact-info{
+    height: 70px;
+    /* test */
+    background-color:rgb(194, 185, 245);
 }
-.col-left .row{
-    width: 100%;
+.notification{
+    height: 80px;
     /* test */
     background-color:rgb(240, 178, 231);
 }
-.col-right .row{
-    width: 100%;
+.row.send-message{
+    height: 75px;
     /* test */
     background-color:rgb(166, 243, 233);
+}
+.contact-filter{
+    height: 50px;
+    /* test */
+    background-color: khaki;
+}
+.contacts li{
+    list-style-type: none;
+    height: 80px;
+    /* test */
+    background-color:lightblue;
+    border-bottom: 1px solid black ;
+}
+
+.chat{
+    height: calc(100% - 70px - 75px);
+    background-image: url('../img/mine.jpg');
 }
