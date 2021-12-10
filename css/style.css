@@ -159,6 +159,40 @@ img{
 }
 .notification{
     display: flex;
-    align-items: center;
+    align-items: center; 
     padding-left: 15px ;
 }
+
+/* Contact filter */
+.contact-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.contact-filter input{
+    width: 95%;
+    height: 80%;
+}
+
+/* Send message */
+.send-message{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+.send-message i{
+    font-size: 20px;
+    padding: 20px;
+}
+.send-message{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+.send-message .contact-filter{
+    flex-grow:  1 ;
+}
+.emoji, .audio{
+    flex-grow:  0 ;
+}
+
