@@ -2,7 +2,9 @@ Vue.config.devtools = true;
 
 const newApp = new Vue({
     el: "#root",
-    data: {
+    data: 
+    {
+        currentActiveContact: '0',
         contacts: [
             {
                 name: 'Michele',
@@ -90,7 +92,9 @@ const newApp = new Vue({
         ]
     },
     methods: {
-
+        activeChat: function(index) {
+            this.currentActiveContact = index;
+        }
     }
 });
 

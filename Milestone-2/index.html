@@ -59,7 +59,11 @@
 
                     <!-- Contacts list -->
                     <ul class="contacts">
-                        <li v-for='element in contacts'>
+
+                        <!-- Element template -->
+                        <li 
+                        v-for='element, index in contacts'
+                        @click='activeChat(index)'>
                             <img :src="'img/avatar' + element.avatar + '.jpg'" alt="Contact avatar">
                             <span>{{element.name}}</span>
                         </li> 
@@ -72,7 +76,7 @@
                     <div class="contact">
 
                         <div class="contact-info">
-                            <img src="img/avatar_3.jpg" alt="Contact avatar">
+                            <img :src="'img/avatar' + contacts[currentActiveContact].avatar + '.jpg'" alt="Contact avatar">
                             <div>
                                 <span>Samuele</span> 
                                 <span class="last-access">Ultimo accesso alle</span>
@@ -90,22 +94,14 @@
                     <div class="chat">
 
                         <!-- Text messages -->
-                        <ul class="history">
-                            <li class='message received'>
-                                <div class="text">La Marianna va in campagna</div>
-                                <div class="time-and-date">10/12/2021</div>
-                            </li>
-                            <li class='message sent'>
-                                <div class="text">Sicuro di non aver sbagliato chat?</div>
-                                <div class="time-and-date">
-                                    10/12/2021
-                                </div>
-                            </li>
-                            <li class='message received'>
-                                <div class="text">Ah scusa!</div>
-                                <div class="time-and-date">
-                                    10/12/2021
-                                </div>
+                        <ul class="history"> 
+                            
+                            <li 
+                            class='message'
+                            v-for="element in contacts[currentActiveContact].messages"
+                            :class="{'received' : element.status === 'received', 'sent' : element.status === 'sent' }">
+                                <div class="text">{{element.text}}</div>
+                                <div class="time-and-date">{{element.date}}</div>
                             </li>
                         </ul>
                     </div>
@@ -130,7 +126,7 @@
         </div>
     </div>
     
-
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
