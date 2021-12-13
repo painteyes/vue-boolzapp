@@ -122,6 +122,27 @@ const newApp = new Vue({
             }, 1000);
         },
     },
+    created: {
+        
+        getRandomIntInclusive: function(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+        },
+
+        getRandomLastAccess: function() {
+            const randomDay = getRandomIntInclusive(1, 31);
+            const randomMonth = getRandomIntInclusive(1, 12);
+            const randomHour = getRandomIntInclusive(0, 12);
+            const randomMinute = getRandomIntInclusive(0, 59);
+            const randomSecond = getRandomIntInclusive(1, 59);
+            
+            this.contacts.forEach(element => {
+                element.lastAccess = `${randomDay}/${randomMonth}/2021 ${randomHour}:${randomMinute}:${randomSecond}`;
+            });
+                
+        }
+    }
     
 });
 
