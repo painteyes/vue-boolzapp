@@ -53,7 +53,11 @@
                     <!-- Filter contacts -->
                     <div class="contact-filter">
                         
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input 
+                        type="text" 
+                        placeholder="Cerca o inizia una nuova chat" 
+                        v-model='contactNameFilter' 
+                        @keyup='filterContactByName'>
                         
                     </div>
 
@@ -63,8 +67,9 @@
                         <!-- Element template -->
                         <li 
                         v-for='element, index in contacts'
+                        v-if='element.visible'
                         :class="{'active': index===currentActiveContact}"
-                        @click='activeChat(index), getRandomLastAccess()'>
+                        @click='activeChat(index)'>
                             <img :src="'img/avatar' + element.avatar + '.jpg'" alt="Contact avatar">
                             <span>{{element.name}}</span>
                         </li> 
@@ -79,9 +84,9 @@
                         <div class="contact-info">
                             <img :src="'img/avatar' + contacts[currentActiveContact].avatar + '.jpg'" alt="Contact avatar">
                             <div>
-                                <span>Samuele</span> 
+                                <span>{{contacts[currentActiveContact].name}}</span> 
                                 <span class="last-access">
-                                    Ultimo accesso alle {{contacts[currentActiveContact].lastAccess}}
+                                    Ultimo accesso il {{contacts[currentActiveContact].lastAccess}}
                                 </span> 
                                 <!-- contacts[currentActiveContact].lastAccess -->
                             </div>

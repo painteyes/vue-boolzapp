@@ -6,6 +6,7 @@ const newApp = new Vue({
     {
         currentActiveContact: '0',
         typedText: '',
+        contactNameFilter:'',
         contacts: [
             {
                 name: 'Michele',
@@ -121,9 +122,16 @@ const newApp = new Vue({
                 });
             }, 1000);
         },
-    },
-    created: {
-        
+        filterContactByName: function () {
+            this.contacts.forEach(element => {
+                if (element.name.toLowerCase().includes(this.contactNameFilter.toLowerCase())){
+                    element.visible = true;
+                } else {
+                    element.visible = false;
+                }
+            });
+        },
+
         getRandomIntInclusive: function(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -131,19 +139,20 @@ const newApp = new Vue({
         },
 
         getRandomLastAccess: function() {
-            const randomDay = getRandomIntInclusive(1, 31);
-            const randomMonth = getRandomIntInclusive(1, 12);
-            const randomHour = getRandomIntInclusive(0, 12);
-            const randomMinute = getRandomIntInclusive(0, 59);
-            const randomSecond = getRandomIntInclusive(1, 59);
-            
             this.contacts.forEach(element => {
-                element.lastAccess = `${randomDay}/${randomMonth}/2021 ${randomHour}:${randomMinute}:${randomSecond}`;
-            });
-                
+                const randomDay = this.getRandomIntInclusive(1, 31);
+                const randomMonth = this.getRandomIntInclusive(1, 12);
+                const randomHour = this.getRandomIntInclusive(0, 12);
+                const randomMinute = this.getRandomIntInclusive(0, 59);
+                const randomSecond = this.getRandomIntInclusive(1, 59);
+
+                element.lastAccess = `${randomDay}/${randomMonth}/2021 alle ${randomHour}:${randomMinute}`;
+            });   
         }
+    },
+    created() {
+        this.getRandomLastAccess();
     }
-    
 });
 
 
