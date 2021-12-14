@@ -109,8 +109,21 @@
                             class='message'
                             v-for="element in contacts[currentActiveContact].messages"
                             :class="{'received' : element.status === 'received', 'sent' : element.status === 'sent' }">
+                                
                                 <div class="text">{{element.text}}</div>
+                                
                                 <div class="time-and-date">{{element.date}}</div>
+                                
+                                <div class="arrow" @click='showMessageMenu'>
+                                    <i class="fas fa-chevron-down"></i>
+
+                                    <div class="actions-menu"  :class="{'active': element.clicked}">
+                                        <div class="info">Message info</div>
+                                        <div class="delete">Delete message</div>
+                                    </div>
+                                </div>
+                                <!-- v-show='element.clicked' -->
+                                
                             </li>
                         </ul>
                     </div>

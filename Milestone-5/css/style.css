@@ -159,18 +159,20 @@ img{
     width: 40%;
     max-width: 60%;
     border-radius: 10px ;
-    padding: 15px;
-}
-.time-and-date{
-    position: absolute;
-    right: 7px;
-    bottom: 7px;
-    font-size: 11px;
-    color: grey;
+    padding: 17px;
 }
 .message{
     position: relative;
+    
 }
+.time-and-date{
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    font-size: 11px;
+    color: grey;
+}
+
 .message .text{
     margin-bottom: 9px;
 }
@@ -179,10 +181,68 @@ img{
     float: left;
     clear: both;
 }
+
 .sent{
     background-color: #d5f9ba ;
     float: right;
     clear: both;
+}
+
+
+/* Message menu */
+.arrow{
+    display: none;
+    position: absolute;
+    top:7px;
+    right: 7px;
+    color: grey;
+    z-index: 2;
+    text-align: center;
+    padding: 5px;
+}
+.message:hover .arrow {
+    display: block;
+}
+/* .arrow.active{
+    display: block;
+} */
+.arrow i{
+    /* font-size: 20px; */
+}
+
+.received .arrow {
+    background-color:white ;
+    box-shadow: 0px 0px 5px white;
+    box-shadow: 0px 1pxpx 5px #888;
+}
+.sent .arrow {
+    background-color: #d5f9ba;
+    box-shadow: 0px 0px 5px #d5f9ba;
+    box-shadow: 0px 1pxpx 5px #888;
+}
+.message .actions-menu{
+    display: none; 
+    background-color: white; 
+    position: absolute;
+    top: 25px;
+    right: 7px;
+    border-radius: 5px;
+    z-index: 1;
+    box-shadow: 0px 2px 5px #888;
+}
+
+.actions-menu.active{
+    display: block;
+}
+
+
+.actions-menu * {
+    width: 180px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: black;
+    border-bottom: 1px solid rgb(228, 228, 228)
 }
 
 /* disclaimer */
