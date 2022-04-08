@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <title>WhatsApp</title>
-
+    <title>WhatsApp Web</title>
 </head>
 <body>
    
@@ -16,27 +15,23 @@
 
         <!-- Wrapper -->
         <div class="app-wrapper">
-
             <!-- Container -->
-            <div class="container">
-                
-                <div class="col-left"> 
-                    
+            <div class="container"> 
+
+                <!-- Column -->
+                <div class="col-left">                    
                     <!-- User -->
                     <div class="user">
-
                         <div class="user-info">
                             <img src="img/avatar_io.jpg" alt="Mine avatar">
                             <span>Andrea Occhipinti</span>
                         </div>
-
                         <div class="actions">
                             <i class="fas fa-circle-notch"></i>
                             <i class="fas fa-comment-alt"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
-                    </div>
-                    
+                    </div>                    
                     <!-- Notification -->
                     <div class="disclaimer">
 
@@ -49,24 +44,19 @@
                             <a class="desktop-notifaction">Attiva notifiche desktop</a>
                         </div>
                     </div>
-
                     <!-- Filter contacts -->
-                    <div class="contact-filter">
-                        
+                    <div class="contact-filter">                        
                         <input 
                         type="text" 
                         placeholder="Cerca o inizia una nuova chat" 
                         v-model='contactNameFilter' 
-                        @keyup='filterContactByName'>
-                        
+                        @keyup='filterContactByName'>                        
                     </div>
-
                     <!-- Contacts list -->
                     <ul class="contacts">
-
-                        <!-- Element template -->
+                        <!-- Element -->
                         <li 
-                        v-for='element in contacts'
+                        v-for='element,index in contacts'
                         v-if='element.visible'
                         :class="{'active': index === currentActiveContact}"
                         @click='activeChat(index)'>
@@ -76,11 +66,10 @@
                     </ul>
                 </div>
 
+                <!-- Column -->
                 <div class="col-right">
-
                     <!-- Contact info -->
                     <div class="contact">
-
                         <div class="contact-info">
                             <img :src="'img/avatar' + contacts[currentActiveContact].avatar + '.jpg'" alt="Contact avatar">
                             <div>
@@ -90,56 +79,46 @@
                                 </span> 
                             </div>
                         </div>
-
                         <div class="actions">
                             <i class="fas fa-search"></i>
                             <i class="fas fa-paperclip"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </div>  
                     </div>
-
                     <!-- Chat -->
                     <div class="chat">
-
                         <!-- Text messages -->
-                        <ul class="history"> 
-                            
+                        <ul class="history">                             
                             <li 
                             class='message'
-                            v-for="element in contacts[currentActiveContact].messages"
-                            :class="{'received' : element.status === 'received', 'sent' : element.status === 'sent' }">
-                                
-                                <div class="text">{{element.text}}</div>
-                                
-                                <div class="time-and-date">{{element.date}}</div>
-                                
-                                <div class="arrow" @click='showMessageMenu'>
+                            v-for="element, index in contacts[currentActiveContact].messages"
+                            :class="{'received' : element.status === 'received', 'sent' : element.status === 'sent' }">                            
+                                <div class="text">{{element.text}}</div>                                
+                                <div class="time-and-date">{{element.date}}</div>                                
+                                <div 
+                                    class="arrow" 
+                                    :class="{'active': element.clicked}"
+                                    @click='showMessageMenu(index)'
+                                >
                                     <i class="fas fa-chevron-down"></i>
-
-                                    <div class="actions-menu"  :class="{'active': element.clicked}">
-                                        <div class="info">Message info</div>
-                                        <div class="delete">Delete message</div>
-                                    </div>
-                                </div>
-                                <!-- v-show='element.clicked' -->
-                                
+                                </div>  
+                                <div class="actions-menu" :class="{'active': element.clicked}">
+                                    <div class="info">Dettagli</div>
+                                    <div class="delete">Cancella</div>
+                                </div>                              
                             </li>
                         </ul>
                     </div>
-
                     <!-- Send message -->
                     <div class="send-message">
-
                         <div class="emoji">
                             <i class="far fa-smile"></i>
                         </div>
-
                         <div 
                         class="write-area"
                         @keyup.enter='sendTextMessage()'>
                             <input type="text" placeholder="Scrivi un messaggio" v-model='typedText'>
                         </div>
-
                         <div class="audio">
                             <i class="fas fa-microphone"></i> 
                         </div>
@@ -150,7 +129,6 @@
     </div>
     
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

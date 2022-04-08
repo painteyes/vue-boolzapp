@@ -61,7 +61,7 @@ const newApp = new Vue({
                 lastAccess: '',
             },
             {
-                name: 'Samuele',
+                name: 'Sara',
                 avatar: '_3',
                 visible: true,
                 messages: [
@@ -113,17 +113,14 @@ const newApp = new Vue({
             this.currentActiveContact = index;
         },
         sendTextMessage: function() {
-
             // Generate element
             this.contacts[this.currentActiveContact].messages.push({
                 date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                 text: this.typedText,
                 status: 'sent'
             });
-            
             // Reset text box
             this.typedText = '' ;
-
             // Automated reply
             const botAnswer = setTimeout(() => {
                 this.contacts[this.currentActiveContact].messages.push({
@@ -142,19 +139,24 @@ const newApp = new Vue({
                 }
             });
         },
-        showMessageMenu: function() {
-            this.contacts[this.currentActiveContact].messages.forEach(element => {
-                element.clicked = !element.clicked;
-            });
-        },
-        
+        showMessageMenu: function(index) {
 
+            if (this.contacts[this.currentActiveContact].messages[index].clicked) {
+                this.contacts[this.currentActiveContact].messages[index].clicked = !this.contacts[this.currentActiveContact].messages[index].clicked
+            } else {
+                this.contacts[this.currentActiveContact].messages.forEach(element => {
+                    if (element.clicked) {
+                        element.clicked = !element.clicked
+                    }
+                })
+                this.contacts[this.currentActiveContact].messages[index].clicked = !this.contacts[this.currentActiveContact].messages[index].clicked
+            }
+        },
         getRandomIntInclusive: function(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
         },
-
         getRandomLastAccess: function() {
             this.contacts.forEach(element => {
                 const randomDay = this.getRandomIntInclusive(1, 31);
