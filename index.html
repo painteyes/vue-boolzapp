@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolzapp Web</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>WhatsApp</title>
 
 </head>
 <body>
@@ -27,13 +27,13 @@
 
                         <div class="user-info">
                             <img src="img/avatar_io.jpg" alt="Mine avatar">
-                            <span>Nome Utente</span>
+                            <span>Andrea Occhipinti</span>
                         </div>
 
                         <div class="actions">
-                            <i class="far fa-comment-alt"></i>
+                            <i class="fas fa-circle-notch"></i>
                             <i class="fas fa-comment-alt"></i>
-                            <i class="far fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
                     
@@ -53,15 +53,25 @@
                     <!-- Filter contacts -->
                     <div class="contact-filter">
                         
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input 
+                        type="text" 
+                        placeholder="Cerca o inizia una nuova chat" 
+                        v-model='contactNameFilter' 
+                        @keyup='filterContactByName'>
                         
                     </div>
 
                     <!-- Contacts list -->
                     <ul class="contacts">
-                        <li v-for='element in contacts'>
+
+                        <!-- Element template -->
+                        <li 
+                        v-for='element in contacts'
+                        v-if='element.visible'
+                        :class="{'active': index === currentActiveContact}"
+                        @click='activeChat(index)'>
                             <img :src="'img/avatar' + element.avatar + '.jpg'" alt="Contact avatar">
-                            <span>{{element.name}}</span>
+                            <span>{{ element.name }}</span>
                         </li> 
                     </ul>
                 </div>
@@ -72,17 +82,19 @@
                     <div class="contact">
 
                         <div class="contact-info">
-                            <img src="img/avatar_3.jpg" alt="Contact avatar">
+                            <img :src="'img/avatar' + contacts[currentActiveContact].avatar + '.jpg'" alt="Contact avatar">
                             <div>
-                                <span>Samuele</span> 
-                                <span class="last-access">Ultimo accesso alle</span>
+                                <span>{{contacts[currentActiveContact].name}}</span> 
+                                <span class="last-access">
+                                    Ultimo accesso il {{contacts[currentActiveContact].lastAccess}}
+                                </span> 
                             </div>
                         </div>
 
                         <div class="actions">
-                            <i class="far fa-comment-alt"></i>
-                            <i class="fas fa-comment-alt"></i>
-                            <i class="far fa-comment-alt"></i>
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </div>  
                     </div>
 
@@ -90,22 +102,27 @@
                     <div class="chat">
 
                         <!-- Text messages -->
-                        <ul class="history">
-                            <li class='message received'>
-                                <div class="text">La Marianna va in campagna</div>
-                                <div class="time-and-date">10/12/2021</div>
-                            </li>
-                            <li class='message sent'>
-                                <div class="text">Sicuro di non aver sbagliato chat?</div>
-                                <div class="time-and-date">
-                                    10/12/2021
+                        <ul class="history"> 
+                            
+                            <li 
+                            class='message'
+                            v-for="element in contacts[currentActiveContact].messages"
+                            :class="{'received' : element.status === 'received', 'sent' : element.status === 'sent' }">
+                                
+                                <div class="text">{{element.text}}</div>
+                                
+                                <div class="time-and-date">{{element.date}}</div>
+                                
+                                <div class="arrow" @click='showMessageMenu'>
+                                    <i class="fas fa-chevron-down"></i>
+
+                                    <div class="actions-menu"  :class="{'active': element.clicked}">
+                                        <div class="info">Message info</div>
+                                        <div class="delete">Delete message</div>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class='message received'>
-                                <div class="text">Ah scusa!</div>
-                                <div class="time-and-date">
-                                    10/12/2021
-                                </div>
+                                <!-- v-show='element.clicked' -->
+                                
                             </li>
                         </ul>
                     </div>
@@ -117,8 +134,10 @@
                             <i class="far fa-smile"></i>
                         </div>
 
-                        <div class="write-area">
-                            <input type="text" placeholder="Scrivi un messaggio">
+                        <div 
+                        class="write-area"
+                        @keyup.enter='sendTextMessage()'>
+                            <input type="text" placeholder="Scrivi un messaggio" v-model='typedText'>
                         </div>
 
                         <div class="audio">
@@ -130,6 +149,7 @@
         </div>
     </div>
     
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 
     <script type="text/javascript" src="js/script.js"></script>
 </body>
