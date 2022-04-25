@@ -11,6 +11,8 @@ Features :
 ## Technologies 
 - HTML
 - CSS
+- JavaScript
+- Vue.js
 
 ## Live demo
 <!-- You can see it soon !
