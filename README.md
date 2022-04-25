@@ -18,7 +18,7 @@ Features :
  You can **[check it out here](https://painteyes.github.io/vue-whatsapp)** !
 
 ### Screenshot
-<img src="https://i.postimg.cc/bJRSNMYt/screencapture-file-C-Users-andre-Classe-48-vue-boolzapp-index-html-2022-04-11-12-44-35.png"/>
+<img src="https://i.postimg.cc/Hs9mgwpc/whatsapp.png"/>
 
 ## Contributor
 Andrea Occhipinti ( [GitHub](https://github.com/painteyes) | [LinkedIn](https://www.linkedin.com/in/occhipinti) )
